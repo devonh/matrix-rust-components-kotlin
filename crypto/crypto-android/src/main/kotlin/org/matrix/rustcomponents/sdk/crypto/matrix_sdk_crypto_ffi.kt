@@ -463,7 +463,7 @@ internal interface _UniFFILib : Library {
     ): Unit
     fun uniffi_matrix_sdk_crypto_ffi_fn_method_olmmachine_outgoing_requests(`ptr`: Pointer,_uniffi_out_err: RustCallStatus, 
     ): RustBuffer.ByValue
-    fun uniffi_matrix_sdk_crypto_ffi_fn_method_olmmachine_receive_sync_changes(`ptr`: Pointer,`events`: RustBuffer.ByValue,`deviceChanges`: RustBuffer.ByValue,`keyCounts`: RustBuffer.ByValue,`pseudoidCounts`: RustBuffer.ByValue,`unusedFallbackKeys`: RustBuffer.ByValue,_uniffi_out_err: RustCallStatus, 
+    fun uniffi_matrix_sdk_crypto_ffi_fn_method_olmmachine_receive_sync_changes(`ptr`: Pointer,`events`: RustBuffer.ByValue,`deviceChanges`: RustBuffer.ByValue,`keyCounts`: RustBuffer.ByValue,`cryptoidCounts`: RustBuffer.ByValue,`unusedFallbackKeys`: RustBuffer.ByValue,_uniffi_out_err: RustCallStatus, 
     ): RustBuffer.ByValue
     fun uniffi_matrix_sdk_crypto_ffi_fn_method_olmmachine_receive_unencrypted_verification_event(`ptr`: Pointer,`event`: RustBuffer.ByValue,`roomId`: RustBuffer.ByValue,_uniffi_out_err: RustCallStatus, 
     ): Unit
@@ -2228,11 +2228,11 @@ class OlmMachine(
         }
     
     
-    @Throws(CryptoStoreException::class)override fun `receiveSyncChanges`(`events`: String, `deviceChanges`: DeviceLists, `keyCounts`: Map<String, Int>, `pseudoidCounts`: Map<String, Int>, `unusedFallbackKeys`: List<String>?): String =
+    @Throws(CryptoStoreException::class)override fun `receiveSyncChanges`(`events`: String, `deviceChanges`: DeviceLists, `keyCounts`: Map<String, Int>, `cryptoidCounts`: Map<String, Int>, `unusedFallbackKeys`: List<String>?): String =
         callWithPointer {
     rustCallWithError(CryptoStoreException) { _status ->
     _UniFFILib.INSTANCE.uniffi_matrix_sdk_crypto_ffi_fn_method_olmmachine_receive_sync_changes(it,
-        FfiConverterString.lower(`events`),FfiConverterTypeDeviceLists.lower(`deviceChanges`),FfiConverterMapStringInt.lower(`keyCounts`),FfiConverterMapStringInt.lower(`pseudoidCounts`),FfiConverterOptionalSequenceString.lower(`unusedFallbackKeys`),
+        FfiConverterString.lower(`events`),FfiConverterTypeDeviceLists.lower(`deviceChanges`),FfiConverterMapStringInt.lower(`keyCounts`),FfiConverterMapStringInt.lower(`cryptoidCounts`),FfiConverterOptionalSequenceString.lower(`unusedFallbackKeys`),
         _status)
 }
         }.let {
